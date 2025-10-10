@@ -16,8 +16,16 @@ export class Triangle implements Figure {
     public b: number,
     public c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0) {
+    if (typeof a !== 'number' || !Number.isFinite(a) || a <= 0) {
       throw new Error('Side a must be a positive number');
+    }
+
+    if (typeof b !== 'number' || !Number.isFinite(b) || b <= 0) {
+      throw new Error('Side b must be a positive number');
+    }
+
+    if (typeof c !== 'number' || !Number.isFinite(c) || c <= 0) {
+      throw new Error('Side c must be a positive number');
     }
 
     const maxSide = Math.max(a, b, c);
@@ -43,8 +51,8 @@ export class Circle implements Figure {
     public color: Color,
     public radius: number,
   ) {
-    if (radius <= 0) {
-      throw new Error('Radius must be a positive number');
+    if (typeof radius !== 'number' || !Number.isFinite(radius) || radius <= 0) {
+      throw new Error('Radius must be a finite positive number');
     }
   }
 
@@ -63,8 +71,12 @@ export class Rectangle implements Figure {
     public width: number,
     public height: number,
   ) {
-    if (width <= 0 || height <= 0) {
-      throw new Error('Width and height must be a positive number');
+    if (typeof width !== 'number' || !Number.isFinite(width) || width <= 0) {
+      throw new Error('Width must be a finite positive number');
+    }
+
+    if (typeof height !== 'number' || !Number.isFinite(height) || height <= 0) {
+      throw new Error('Height must be a finite positive number');
     }
   }
 
